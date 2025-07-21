@@ -1,9 +1,3 @@
-namespace SpriteKind {
-    export const Player2 = SpriteKind.create()
-    export const Player3 = SpriteKind.create()
-    export const Player4 = SpriteKind.create()
-    export const Player1 = SpriteKind.create()
-}
 controller.player1.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
     if (mySprite.overlapsWith(mySprite2) && false) {
     	
@@ -31,7 +25,7 @@ function _1 () {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Player1)
+        `, SpriteKind.Player)
     controller.player1.moveSprite(mySprite)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera1, mySprite)
 }
@@ -53,42 +47,57 @@ function _2 () {
         . . . f 3 3 5 3 3 5 3 3 f . . . 
         . . . f f f f f f f f f f . . . 
         . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Player2)
+        `, SpriteKind.Player)
     controller.player2.moveSprite(mySprite2)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera2, mySprite2)
 }
 function ArrierePlan () {
     splitScreen.setBorderColor(15)
+    game.setDialogFrame(img`
+        999999999999999999999999
+        966666666666666666666669
+        969999999999999999999969
+        999999999999999999999999
+        898668999999999999866898
+        898998999999999999899898
+        898888999999999999888898
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        899999999999999999999998
+        898668999999999999866898
+        898998999999999999899898
+        898888999999999999888898
+        889999999999999999999988
+        888888888888888888888888
+        888888888888888888888888
+        `)
     if (Math.percentChance(25)) {
         scene.setBackgroundColor(12)
         tiles.setCurrentTilemap(tilemap`niveau2`)
-        Loup = statusbars.create(36, 4, StatusBarKind.Energy)
-        Loup.attachToSprite(mySprite, 7, 0)
-        Loup.setColor(2, 15)
-        Loup.setBarBorder(1, 15)
+        game.showLongText("Red Map", DialogLayout.Full)
+        mySprite.setScale(2, ScaleAnchor.Middle)
     } else {
         if (Math.percentChance(33)) {
             scene.setBackgroundColor(12)
             tiles.setCurrentTilemap(tilemap`niveau1`)
-            Loup = statusbars.create(36, 4, StatusBarKind.Energy)
-            Loup.attachToSprite(mySprite2, 7, 0)
-            Loup.setColor(2, 15)
-            Loup.setBarBorder(1, 15)
+            mySprite2.setScale(2, ScaleAnchor.Middle)
         } else {
             if (Math.percentChance(50)) {
                 scene.setBackgroundColor(12)
                 tiles.setCurrentTilemap(tilemap`niveau3`)
-                Loup = statusbars.create(36, 4, StatusBarKind.Energy)
-                Loup.attachToSprite(mySprite3, 7, 0)
-                Loup.setColor(2, 15)
-                Loup.setBarBorder(1, 15)
+                mySprite3.setScale(2, ScaleAnchor.Middle)
             } else {
                 scene.setBackgroundColor(12)
                 tiles.setCurrentTilemap(tilemap`niveau4`)
-                Loup = statusbars.create(36, 4, StatusBarKind.Energy)
-                Loup.attachToSprite(mySprite4, 7, 0)
-                Loup.setColor(2, 15)
-                Loup.setBarBorder(1, 15)
+                mySprite4.setScale(2, ScaleAnchor.Middle)
             }
         }
     }
@@ -111,7 +120,7 @@ function _4 () {
         f b f b f f f f f f b f b f b f 
         . . . . . f f f f f f . . . . . 
         . . . . . . . f f f . . . . . . 
-        `, SpriteKind.Player4)
+        `, SpriteKind.Player)
     controller.player4.moveSprite(mySprite4)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera4, mySprite4)
 }
@@ -145,10 +154,10 @@ function statusbars_game () {
     StatusBars4()
 }
 function StatusBars2 () {
-    statusbar2 = statusbars.create(36, 4, StatusBarKind.Health)
-    statusbar2.attachToSprite(mySprite2, 2, 0)
-    statusbar2.max = 3
-    statusbar2.setBarBorder(1, 15)
+    statusbar = statusbars.create(36, 4, StatusBarKind.Health)
+    statusbar.attachToSprite(mySprite2, 2, 0)
+    statusbar.max = 3
+    statusbar.setBarBorder(1, 15)
 }
 function StatusBars4 () {
     statusbar4 = statusbars.create(36, 4, StatusBarKind.Health)
@@ -174,17 +183,15 @@ function _3 () {
         . . e f b d b d b d b b f e . . 
         . . . f f 1 d 1 d 1 d f f . . . 
         . . . . . f f b b f f . . . . . 
-        `, SpriteKind.Player3)
+        `, SpriteKind.Player)
     controller.player3.moveSprite(mySprite3)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera3, mySprite3)
 }
 let statusbar4: StatusBarSprite = null
-let statusbar2: StatusBarSprite = null
 let statusbar3: StatusBarSprite = null
 let statusbar: StatusBarSprite = null
 let mySprite4: Sprite = null
 let mySprite3: Sprite = null
-let Loup: StatusBarSprite = null
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
 namespace userconfig {
